@@ -1,15 +1,15 @@
 import { Router } from "express";
-import { Admin } from "./controllers/AdminController";
+import { Admin } from "./controllers/adminController";
 import { CreateChallengeController } from "./controllers/challenge/createChallengeController";
 import { GetChallengeController } from "./controllers/challenge/getChallengeController";
-import { DeleteManyDbController } from "./controllers/DeleteManyDbController";
+import { DeleteManyDbController } from "./controllers/deleteManyDbController";
 import { GetProfileController } from "./controllers/profile/getProfileController";
 import { UpdateProfileController } from "./controllers/profile/updateProfileController";
-import { DeleteController } from "./controllers/user/DeleteController";
-import { LoginController } from "./controllers/user/LoginController";
-import { LogoutController } from "./controllers/user/LogoutController";
-import { SignupController } from "./controllers/user/SignupController";
-import { UpdateController } from "./controllers/user/UpdateController";
+import { DeleteController } from "./controllers/user/deleteController";
+import { LoginController } from "./controllers/user/loginController";
+import { LogoutController } from "./controllers/user/logoutController";
+import { SignupController } from "./controllers/user/signupController";
+import { UpdateController } from "./controllers/user/updateController";
 import { ensureAuthenticated } from "./middleware/ensureAuthenticate";
 
 const router = Router();
