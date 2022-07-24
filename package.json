@@ -10,7 +10,7 @@
   "scripts": {
     "build": "prisma generate",
     "dev": "ts-node-dev --exit-child src/server.ts",
-    "start": "tsc & node dist/server.js",
+    "start": "tsc & node dist/src/server.js",
     "migrate": "prisma migrate dev",
     "start-and-teste": "npm run start && npm run teste",
     "autocannon": "autocannon -c 100 -d 10 localhost:8000/user/Messages --renderStatusCode",
@@ -28,7 +28,9 @@
     "node-cache": "^5.1.2",
     "prisma": "^4.1.0",
     "yup": "^0.32.11",
-    "typescript": "^4.7.4",
+    "typescript": "^4.7.4"
+  },
+  "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.12",
@@ -43,6 +45,5 @@
     "ts-jest": "^28.0.6",
     "ts-node": "^10.8.2",
     "ts-node-dev": "^2.0.0"
-  },
-  "devDependencies": {}
+  }
 }
