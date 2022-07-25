@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 // import { expect, test, describe } from "@jest/globals";
-const validate_1 = require("../../src/utils/validate");
+const validate_1 = require("../../utils/validate");
 describe("API Test validade test suite", () => {
     const userDataCorrect = {
         firstName: "Bhryan",

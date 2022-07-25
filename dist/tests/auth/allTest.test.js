@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const globals_1 = require("@jest/globals");
 const supertest_1 = __importDefault(require("supertest"));
-const app_1 = require("../../src/app");
+const app_1 = require("../../app");
 const challenges_1 = require("./challenges");
 const user_1 = require("./user");
 (0, globals_1.describe)("API E2E Test Suite", () => {
