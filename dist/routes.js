@@ -2,12 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.router = void 0;
 const express_1 = require("express");
-const AdminController_1 = require("./controllers/AdminController");
 const createChallengeController_1 = require("./controllers/challenge/createChallengeController");
 const getChallengeController_1 = require("./controllers/challenge/getChallengeController");
 const deleteManyDbController_1 = require("./controllers/deleteManyDbController");
 const getProfileController_1 = require("./controllers/profile/getProfileController");
 const updateProfileController_1 = require("./controllers/profile/updateProfileController");
+const getUsers_1 = require("./controllers/user/getUsers");
 const DeleteController_1 = require("./controllers/user/DeleteController");
 const LoginController_1 = require("./controllers/user/LoginController");
 const LogoutController_1 = require("./controllers/user/LogoutController");
@@ -21,8 +21,8 @@ router.post("/user/login", new LoginController_1.LoginController().handle);
 router.post("/user/signout", ensureAuthenticate_1.ensureAuthenticated, new LogoutController_1.LogoutController().handle);
 router.delete("/user", ensureAuthenticate_1.ensureAuthenticated, new DeleteController_1.DeleteController().handle);
 router.put("/user", ensureAuthenticate_1.ensureAuthenticated, new UpdateController_1.UpdateController().handle);
-router.get("/users", new AdminController_1.Admin().handle);
-router.delete("/delete", new deleteManyDbController_1.DeleteManyDbController().clear);
+router.get("/users", new getUsers_1.getUsersControllers().handle);
+router.delete("/delete", ensureAuthenticate_1.ensureAuthenticated, new deleteManyDbController_1.DeleteManyDbController().clear);
 // profile
 router.put("/user/profile", ensureAuthenticate_1.ensureAuthenticated, new updateProfileController_1.UpdateProfileController().handle);
 router.get("/user/profile", ensureAuthenticate_1.ensureAuthenticated, new getProfileController_1.GetProfileController().handle);
