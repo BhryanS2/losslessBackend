@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetChallengeController = void 0;
-const getChallengeService_1 = require("../../services/challenge/getChallengeService");
-class GetChallengeController {
+exports.getUsersControllers = void 0;
+const getUsersService_1 = require("../../services/user/getUsersService");
+class getUsersControllers {
     async handle(req, res) {
         try {
-            const service = new getChallengeService_1.GetChallengeService();
+            const service = new getUsersService_1.getUsersService();
             const response = await service.execute();
             return res.json({ message: response, success: true });
         }
@@ -14,4 +14,4 @@ class GetChallengeController {
         }
     }
 }
-exports.GetChallengeController = GetChallengeController;
+exports.getUsersControllers = getUsersControllers;
