@@ -1,18 +1,20 @@
 import { Router } from "express";
 import { CreateChallengeController } from "./controllers/challenge/createChallengeController";
 import { GetChallengeController } from "./controllers/challenge/getChallengeController";
+import { EditChallengeController } from "./controllers/challenge/editChallengeController";
+import { DeleteChallengeController } from "./controllers/challenge/deleteChalllengeController";
 
-import { DeleteManyDbController } from "./controllers/deleteManyDbController";
+import { DeleteManyDbController } from "./controllers/DeleteManyDbController";
 
 import { GetProfileController } from "./controllers/profile/getProfileController";
 import { UpdateProfileController } from "./controllers/profile/updateProfileController";
 
-import { getUsersControllers } from "./controllers/user/getUsers";
-import { DeleteController } from "./controllers/user/deleteController";
-import { LoginController } from "./controllers/user/loginController";
-import { LogoutController } from "./controllers/user/logoutController";
-import { SignupController } from "./controllers/user/signupController";
-import { UpdateController } from "./controllers/user/updateController";
+import { getUsersControllers } from "./controllers/user/getUsersController";
+import { DeleteController } from "./controllers/user/deleteUserController";
+import { LoginController } from "./controllers/user/loginUserController";
+import { LogoutController } from "./controllers/user/logoutUserController";
+import { SignupController } from "./controllers/user/signupUserController";
+import { UpdateController } from "./controllers/user/updateUserController";
 
 import { ensureAuthenticated } from "./middleware/ensureAuthenticate";
 
@@ -47,7 +49,10 @@ router.get(
 
 // challenges
 router.get("/challenges", new GetChallengeController().handle);
-router.post("/challenges", new CreateChallengeController().handle);
+router.post("/challenge", ensureAuthenticated, new CreateChallengeController().handle);
+router.put("/challenge/:id", ensureAuthenticated, new EditChallengeController().handle);
+router.delete("/challenge/:id", ensureAuthenticated, new DeleteChallengeController().handle);
+
 
 router.get("/", (req, res) => {
   res.send("Hello World!");

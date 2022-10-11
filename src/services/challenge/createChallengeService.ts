@@ -1,16 +1,12 @@
 import { prisma } from "../../prisma";
 import { challengeType } from "../../types/auth";
+import { IsAdminService } from "./isAdmin";
 
 export class CreateChallengeService {
-  async execute(data: challengeType) {
-    if (!data.amount || !data.description || !data.type) {
-      const fields = {
-        amount: !data.amount ? "amount is required" : "",
-        description: !data.description ? "description is required" : "",
-        type: !data.type ? "type is required" : "",
-      };
-      throw new Error(JSON.stringify(fields));
-    }
+  async execute(data: challengeType, userId: string) {
+    const isAdmin = new IsAdminService();
+    await isAdmin.execute(userId);
+
     const challenge = await prisma.challenges.create({
       data: {
         amount: data.amount,

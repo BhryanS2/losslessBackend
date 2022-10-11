@@ -5,8 +5,19 @@ export class CreateChallengeController {
   async handle(req: Request, res: Response) {
     try {
       const data = req.body;
+      const { userId } = req;
+
+
       const service = new CreateChallengeService();
-      const response = await service.execute(data);
+      if (!data.amount || !data.description || !data.type) {
+        const fields = {
+          amount: !data.amount ? "amount is required" : "",
+          description: !data.description ? "description is required" : "",
+          type: !data.type ? "type is required" : "",
+        };
+        return res.status(400).json({ message: "fields are required", fields, success: false });
+      }
+      const response = await service.execute(data, userId);
       return res.json({ message: response, success: true });
     } catch (error) {
       return res.status(400).json({ message: error.message, success: false });

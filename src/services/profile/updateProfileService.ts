@@ -16,16 +16,6 @@ export class UpdateProfileService {
     if (!data) {
       throw new Error("Data is required");
     }
-    if (!data.challengeCompletedId || !data.userLevel || !data.experience) {
-      const fields = {
-        challengeCompletedId: !data.challengeCompletedId
-          ? "challengeCompletedId is required"
-          : "",
-        userLevel: !data.userLevel ? "userLevel is required" : "",
-        experience: !data.experience ? "experience is required" : "",
-      };
-      throw new Error(JSON.stringify(fields));
-    }
 
     const userProfile = await prisma.userProfile.findFirst({
       where: {
@@ -56,7 +46,7 @@ export class UpdateProfileService {
         experience: data.experience,
         challengesCompleted: {
           create: {
-            userId: userId,
+            userId,
             challengesId: data.challengeCompletedId,
           },
         },

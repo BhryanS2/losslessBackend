@@ -1,15 +1,14 @@
 import { Request, Response } from "express";
-import { UpdateService } from "../../services/user/updateService";
+import { DeleteService } from "../../services/user/deleteUserService";
 
-export class UpdateController {
+export class DeleteController {
   async handle(request: Request, response: Response) {
     const { userId } = request;
-    const data = request.body;
-    const service = new UpdateService();
+    const service = new DeleteService();
     try {
-      await service.execute(Number(userId), data);
+      await service.execute(Number(userId));
       response.status(204).json({
-        message: "User updated successfully",
+        message: "User deleted successfully",
         success: true,
       });
     } catch (error) {
