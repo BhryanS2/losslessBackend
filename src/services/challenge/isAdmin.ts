@@ -2,9 +2,9 @@ import { prisma } from "../../prisma";
 
 export class IsAdminService {
   async execute(userId: string) {
-    const user = await prisma.user.findFirst({
+    const user = await prisma.users.findFirst({
       where: {
-        id: userId,
+        id: Number(userId),
       },
     });
     if (!user) {

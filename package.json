@@ -10,6 +10,7 @@
   "scripts": {
     "build": "prisma generate",
     "dev": "ts-node-dev --exit-child src/server.ts",
+    "dev:debug": "ts-node-dev --inspect --exit-child --transpile-only src/server.ts",
     "start": "tsc & node dist/server.js",
     "migrate": "prisma migrate dev",
     "start-and-teste": "npm run start && npm run teste",
@@ -26,9 +27,11 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "express-winston": "^4.2.0",
     "jsonwebtoken": "^8.5.1",
     "node-cache": "^5.1.2",
     "prisma": "^4.1.0",
+    "winston": "^3.8.2",
     "yup": "^0.32.11"
   },
   "devDependencies": {

@@ -14,7 +14,11 @@ export class UpdateController {
         userLevel: !data.userLevel ? "userLevel is required" : "",
         experience: !data.experience ? "experience is required" : "",
       };
-      return response.status
+      return response.status(400).json({
+        message: "fields are required",
+        fields,
+        success: false,
+      });
     }
 
     const service = new UpdateService();

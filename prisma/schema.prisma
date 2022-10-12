@@ -35,6 +35,7 @@ model users {
   userTypeId          Int
   email               String                @unique
   password            String
+  deletedAt           DateTime?
   userType            UserType              @relation(fields: [userTypeId], references: [id])
   userProfile         userProfile           @relation(fields: [id], references: [id])
   challengesCompleted challengesCompleted[]
@@ -56,6 +57,7 @@ model challenges {
   type                String
   description         String
   amount              Int
+  deleted             Boolean               @default(false)
   userProfile         userProfile[]
   challengesCompleted challengesCompleted[]
 }
