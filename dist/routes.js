@@ -15,6 +15,7 @@ const loginUserController_1 = require("./controllers/user/loginUserController");
 const logoutUserController_1 = require("./controllers/user/logoutUserController");
 const signupUserController_1 = require("./controllers/user/signupUserController");
 const updateUserController_1 = require("./controllers/user/updateUserController");
+const changePasswordController_1 = require("./controllers/user/changePasswordController");
 const ensureAuthenticate_1 = require("./middleware/ensureAuthenticate");
 const router = (0, express_1.Router)();
 exports.router = router;
@@ -25,6 +26,7 @@ router.delete("/user", ensureAuthenticate_1.ensureAuthenticated, new deleteUserC
 router.put("/user", ensureAuthenticate_1.ensureAuthenticated, new updateUserController_1.UpdateController().handle);
 router.get("/users", new getUsersController_1.getUsersControllers().handle);
 router.delete("/delete", ensureAuthenticate_1.ensureAuthenticated, new DeleteManyDbController_1.DeleteManyDbController().clear);
+router.post("/changePassword", new changePasswordController_1.ChangePasswordController().handle);
 // profile
 router.put("/user/profile", ensureAuthenticate_1.ensureAuthenticated, new updateProfileController_1.UpdateProfileController().handle);
 router.get("/user/profile", ensureAuthenticate_1.ensureAuthenticated, new getProfileController_1.GetProfileController().handle);

@@ -4,8 +4,6 @@ import { CreateChallengeService } from "../../services/challenge/createChallenge
 
 export class CreateChallengeController {
   async handle(req: Request, res: Response) {
-    console.log("create challenge controller");
-
     try {
       const data = req.body;
       const { userId } = req;

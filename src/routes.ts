@@ -15,6 +15,7 @@ import { LoginController } from "./controllers/user/loginUserController";
 import { LogoutController } from "./controllers/user/logoutUserController";
 import { SignupController } from "./controllers/user/signupUserController";
 import { UpdateController } from "./controllers/user/updateUserController";
+import { ChangePasswordController } from "./controllers/user/changePasswordController";
 
 import { ensureAuthenticated } from "./middleware/ensureAuthenticate";
 
@@ -34,6 +35,7 @@ router.delete(
   ensureAuthenticated,
   new DeleteManyDbController().clear
 );
+router.post("/changePassword", new ChangePasswordController().handle);
 
 // profile
 router.put(

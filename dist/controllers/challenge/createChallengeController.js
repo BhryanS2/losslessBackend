@@ -5,7 +5,6 @@ const logger_1 = require("../../logger");
 const createChallengeService_1 = require("../../services/challenge/createChallengeService");
 class CreateChallengeController {
     async handle(req, res) {
-        console.log("create challenge controller");
         try {
             const data = req.body;
             const { userId } = req;
